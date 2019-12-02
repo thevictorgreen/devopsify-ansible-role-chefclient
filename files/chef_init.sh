@@ -31,8 +31,8 @@ EOF
   /bin/echo -e "validation_client_name \"ORGNAME-validator\"" >> /etc/chef/client.rb
   /bin/echo -e "validation_key \"/etc/chef/server.pem\"" >> /etc/chef/client.rb
   /bin/echo -e "node_name  \"${NODE_NAME}\"" >> /etc/chef/client.rb
-  # run chef client
-  chef-client -j /etc/chef/first-boot.json
+  # bootstrap chef client
+  chef-client -j /etc/chef/first-boot.json --environment $( hostname |cut -d. -f2 )
   # Idempotentcy
   touch /root/.chef_automate/init.cfg
 fi
