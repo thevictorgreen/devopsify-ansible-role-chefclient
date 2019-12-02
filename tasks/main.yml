@@ -17,6 +17,18 @@
     - '/var/lib/chef'
     - '/var/log/chef'
 
+- name: Upload server.crt File
+  become: yes
+  copy:
+    src: server.crt
+    dest: /root/.chef_automate/server.crt
+
+- name: Upload server.pem File
+  become: yes
+  copy:
+    src: server.pem
+    dest: /root/.chef_automate/server.pem
+
 - name: Upload chef_init.sh File
   become: yes
   copy:
